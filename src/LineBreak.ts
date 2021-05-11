@@ -324,7 +324,7 @@ const _lineBreakAtIndex = (
     }
 
     // LB13 Do not break before ‘]’ or ‘!’ or ‘;’ or ‘/’, even after spaces.
-    if ([CL, CP, EX, IS, SY].indexOf(next) !== -1) {
+    if ([CL, CP, EX, IS, SY].indexOf(next) !== -1 || [CL, CP, EX, IS, SY].indexOf(current) !== -1) {
         return BREAK_NOT_ALLOWED;
     }
 
@@ -364,7 +364,7 @@ const _lineBreakAtIndex = (
     }
 
     // LB21 Do not break before hyphen-minus, other hyphens, fixed-width spaces, small kana, and other non-starters, or after acute accents.
-    if ([BA, HY, NS].indexOf(next) !== -1 || current === BB) {
+    if ([BA, HY, NS].indexOf(next) !== -1 || [BA, HY, NS].indexOf(current) !== -1 || current === BB) {
         return BREAK_NOT_ALLOWED;
     }
 
